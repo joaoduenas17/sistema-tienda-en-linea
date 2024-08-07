@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificar 2FA</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Verificación 2FA</h1>
+        {{#if error}}
+            <p style="color: red;">{{error}}</p>
+        {{/if}}
+        <form action="/verify2FA" method="post">
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+            <label for="token2FA">Código 2FA:</label>
+            <input type="text" id="token2FA" name="token2FA" required>
+            <input type="hidden" name="username" value="{{username}}">
+            <button type="submit">Verificar</button>
+        </form>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Carrito de Compras</h1>
+        <form action="/cart/checkout" method="post">
+            {{#each cart}}
+            <div>
+                <h3>{{this.name}}</h3>
+                <p>Precio: ${{this.price}}</p>
+                <p>{{this.description}}</p>
+                <input type="hidden" name="products[]" value="{{this.id}}">
+            </div>
+            <hr>
+            {{/each}}
+            <p>Total: ${{total}}</p>
+            <button type="submit">Realizar Pago</button>
+        </form>
+    </div>
+</body>
+</html>
